@@ -28,11 +28,25 @@ const TodoList: FC = (): ReactElement => {
   }
   */
   // 因此，要使用useCallback包裹
-  const addTodo = useCallback((todo: ITodo) => {
+  const addTodo = useCallback((todo: ITodo): void => {
     // setTodoList(todoList => [...todoList, todo])
     dispatch({
       type: ACTION_TYPE.ADD_TODO,
       payload: todo
+    })
+  }, [])
+
+  const removeTodo = useCallback((id: number): void => {
+    dispatch({
+      type: ACTION_TYPE.REMOVE_TODO,
+      payload: id
+    })
+  }, [])
+
+  const toggleTodo = useCallback((id: number): void => {
+    dispatch({
+      type: ACTION_TYPE.TOGGLE_TODO,
+      payload: id
     })
   }, [])
 
@@ -42,7 +56,11 @@ const TodoList: FC = (): ReactElement => {
         addTodo={ addTodo }
         todoList={ state.todoList }
       />
-      <TdList />
+      <TdList
+        todoList={state.todoList}
+        removeTodo={removeTodo}
+        toggleTodo={toggleTodo}
+      />
     </div>
   )
 }
