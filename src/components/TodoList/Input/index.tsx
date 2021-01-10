@@ -12,7 +12,7 @@ const TdInput: FC<IProps> = ({
   addTodo,
   todoList
 }): ReactElement => {
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null) // useRef与createRef的区别在于：useRef每次都是同一个引用
 
   const addItem = ():void => {
     const val: string = inputRef.current!.value.trim() // !. 代表着断言。告诉javascript  inputRef.current中一定有value字段
