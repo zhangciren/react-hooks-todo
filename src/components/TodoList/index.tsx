@@ -24,7 +24,16 @@ const TodoList: FC = (): ReactElement => {
 
 
   useEffect(() => {
+    const todoList = JSON.parse(localStorage.getItem('todoList') || '[]')
+    dispatch({
+      type: ACTION_TYPE.INIT_TODOLIST,
+      payload: todoList
+    })
+  }, []) // 初始化时执行一次
+
+  useEffect(() => {
     console.log(state.todoList)
+    localStorage.setItem('todoList', JSON.stringify(state.todoList))
   }, [state.todoList]) // 当todoList有改变的时候，打印todoList
 
   // 当父组件更新，子组件并没有更新的时候，这个句柄会重新生成一次。因此会有性能问题

@@ -9,11 +9,12 @@ export interface IState {
 
 export interface IAction {
   type: ACTION_TYPE,
-  payload: ITodo | number
+  payload: ITodo | number | ITodo[]
 }
 
 export enum ACTION_TYPE {
     ADD_TODO = 'addTodo',
     REMOVE_TODO = 'removeTodo',
-    TOGGLE_TODO = 'toggleTodo'
+    TOGGLE_TODO = 'toggleTodo',
+    INIT_TODOLIST = 'initTodoList'
 }
