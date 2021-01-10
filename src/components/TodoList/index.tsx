@@ -4,8 +4,14 @@ import TdList from './List'
 import { ITodo, IState, ACTION_TYPE } from './typings'
 import { todoReducer } from './reducer'
 
-const initialState:IState = {
-  todoList: []
+// const initialState:IState = {
+//   todoList: []
+// }
+
+function init(initTodoList: ITodo[]): IState {
+  return {
+    todoList: initTodoList
+  }
 }
 
 const TodoList: FC = (): ReactElement => {
@@ -14,7 +20,7 @@ const TodoList: FC = (): ReactElement => {
   // 使用useReducer来代替useState：
   // 比如这个todoList，你可能去add或者remove或者splice等等，也就是你有很多的方法去操作一个状态的变化，而且方法内部有比较相对复杂的逻辑时，就可以使用useReduce
   // 如果你熟悉redux的话，就知道它是如何工作的。
-  const [state, dispatch] = useReducer(todoReducer, initialState) // 返回state和dispatch函数
+  const [state, dispatch] = useReducer(todoReducer, [], init) // 返回state和dispatch函数
 
 
   useEffect(() => {
