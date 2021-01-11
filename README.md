@@ -9,3 +9,6 @@
   - List组件
    - Index组件
    - Item组件
+
+## 启动项目
+* yarn start
